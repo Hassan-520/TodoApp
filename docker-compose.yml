@@ -1,0 +1,19 @@
+version: "3"
+services:
+  backend:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+
+  database:
+    image: mongo:latest
